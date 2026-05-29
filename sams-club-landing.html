@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sam's Club Reward Club That's Changing Everything</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #EEEDE9;
+  color: #111;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 60px 24px 24px;
+}
+.hero h1 {
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+.hero h1 .red { color: #0C6CFF; }
+.hero .sub {
+  font-size: 14px;
+  color: #777;
+  max-width: 340px;
+  margin: 0 auto 28px;
+  line-height: 1.65;
+}
+.btn-red {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #0C6CFF;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  padding: 13px 30px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn-red:hover { background: #0A56CC; }
+
+/* social proof */
+.social-proof {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+.avatars {
+  display: flex;
+  align-items: center;
+}
+.avatars img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #EEEDE9;
+  margin-left: -9px;
+  object-fit: cover;
+  display: block;
+}
+.avatars img:first-child { margin-left: 0; }
+.social-proof p {
+  font-size: 12px;
+  color: #888;
+}
+
+/* HOW IT WORKS */
+.how-section {
+  padding: 20px 20px 40px;
+}
+.eyebrow {
+  text-align: center;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 10px;
+}
+.sec-title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 32px;
+}
+.steps-list {
+  max-width: 560px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  position: relative;
+}
+/* connecting line between steps */
+.step-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 19px;
+  top: 42px;
+  width: 2px;
+  height: calc(100% - 10px);
+  background: #E8E8E8;
+  z-index: 0;
+}
+.step-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  z-index: 1;
+}
+.step-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #0C6CFF;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.step-body {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  flex: 1;
+  margin-bottom: 12px;
+}
+.step-body h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 4px;
+}
+.step-body p {
+  font-size: 12.5px;
+  color: #888;
+  line-height: 1.55;
+}
+
+/* UNLOCK */
+.unlock-section {
+  background: #fff;
+  padding: 56px 20px;
+}
+.unlock-section .eyebrow { color: #0C6CFF; }
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.ucard {
+  border: 1px solid #E0EDFF;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+}
+.ucard-art {
+  height: 150px;
+  background: #EBF2FF;
+  position: relative;
+  overflow: hidden;
+}
+.ucard-art .blob1 {
+  position: absolute;
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  background: #C8DCFF;
+  top: -32px; left: -22px;
+}
+.ucard-art .blob2 {
+  position: absolute;
+  width: 130px; height: 130px;
+  border-radius: 50%;
+  background: #AACCFF;
+  bottom: -45px; right: -35px;
+}
+.ucard-art .corner-icon {
+  position: absolute;
+  width: 26px; height: 26px;
+  border-radius: 7px;
+  background: rgba(12,108,255,0.13);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 2;
+}
+.ucard-art .corner-icon svg {
+  width: 13px; height: 13px;
+  stroke: #0C6CFF; fill: none;
+  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+}
+.ucard-art .ci-tr { top: 12px; right: 12px; }
+.ucard-art .ci-bl { bottom: 12px; left: 12px; }
+.ucard-art .center-icon {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px; height: 50px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.9);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 3;
+}
+.ucard-art .center-icon svg {
+  width: 26px; height: 26px;
+  stroke: #0C6CFF; fill: none;
+  stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
+}
+.ucard-body { padding: 16px 18px 20px; }
+.ucard-body h3 { font-size: 15px; font-weight: 700; margin-bottom: 5px; }
+.ucard-body p { font-size: 12.5px; color: #888; line-height: 1.55; }
+
+/* FAQ */
+.faq-section {
+  padding: 56px 20px;
+}
+.faq-wrap { max-width: 620px; margin: 0 auto; }
+.faq-item {
+  background: #fff;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.faq-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  cursor: pointer;
+  gap: 12px;
+  user-select: none;
+}
+.faq-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #111;
+}
+.fiq {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: #F3F3F3;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.fiq svg {
+  width: 14px; height: 14px;
+  stroke: #666; fill: none;
+  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+}
+.faq-toggle {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid #DDD;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+.faq-toggle svg {
+  width: 11px; height: 11px;
+  stroke: #999; fill: none;
+  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+.faq-item.open .faq-toggle { transform: rotate(180deg); }
+.faq-answer {
+  display: none;
+  padding: 2px 18px 16px 58px;
+  font-size: 13px;
+  color: #777;
+  line-height: 1.65;
+}
+.faq-item.open .faq-answer { display: block; }
+
+/* CTA */
+.cta-section { padding: 0 20px 52px; }
+.cta-box {
+  background: #0C6CFF;
+  border-radius: 20px;
+  padding: 48px 28px;
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+.cta-box::before {
+  content: '';
+  position: absolute;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  top: -100px; left: -70px;
+  pointer-events: none;
+}
+.cta-box::after {
+  content: '';
+  position: absolute;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  bottom: -80px; right: -50px;
+  pointer-events: none;
+}
+.cdeco {
+  position: absolute;
+  width: 32px; height: 32px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1;
+}
+.cdeco svg { width: 16px; height: 16px; stroke: rgba(255,255,255,0.55); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.cdeco.tl { top: 18px; left: 18px; }
+.cdeco.tr { top: 18px; right: 18px; }
+.cdeco.bl { bottom: 18px; left: 18px; }
+.cdeco.br { bottom: 18px; right: 18px; }
+.cta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 50px;
+  margin-bottom: 18px;
+  position: relative; z-index: 2;
+}
+.cta-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: #6EFF8A; }
+.cta-box h2 { font-size: 26px; font-weight: 800; color: #fff; margin-bottom: 12px; position: relative; z-index: 2; }
+.cta-box .cta-p { font-size: 13.5px; color: rgba(255,255,255,0.78); max-width: 360px; margin: 0 auto 26px; line-height: 1.6; position: relative; z-index: 2; }
+.btn-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  color: #0C6CFF;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  padding: 13px 30px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative; z-index: 2;
+}
+.btn-white:hover { opacity: 0.9; }
+.cta-fine { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 13px; position: relative; z-index: 2; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAB6AWwDASIAAhEBAxEB/8QAHAABAQEBAQEBAQEAAAAAAAAAAAcGCAUDBAEC/8QAUhAAAQMDAQQFBQsGCwYHAAAAAQACAwQFEQYHEiExCBNBUWEUFSI3shYYMjZScXN0dYGzIzhmkaXjJCU1QlZicpOhtMMXM0aChJJDRJSxwdHw/8QAHAEBAAIDAQEBAAAAAAAAAAAAAAQFAgMGBwEI/8QAOhEAAQMDAQQIAwcEAgMAAAAAAQACAwQFETEGEiFRE0FhcYGRobEi0fAUMjQ1cnPBM7Lh8SOCNkJS/9oADAMBAAIRAxEAPwDGIiL9ILx9EREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREX6LbQ1dyr4KCgp5KmqneGRRRjLnOPYqLrzY3f8AS+lqe+CZlfuR71wihbxpj3g/zmjkTwxz5cRDqLhTU8rIpXgOfoOf178FIipJpmOkY3IbqpkiIpijoiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi+9vo6u4VsVFQ00tTUzO3Y4omlznHuACr2l+j9qG4UrZ73c6azlwyIRH18jfnAcGj7iVArrpSUABqZA3Pn5DipVNQ1FUcQtz9c9FGkXQlR0cYDGfJ9WStk7OsoQQfDg8Y+dYDXux/VGk6GW5OdTXC3xAF81O4hzBg5LmkcAMcxnmPuhUu0tsqniOOUZPMEe4Ckz2atgbvPZw7MH2U6RFTtDbFdVajpmVtYY7NRyDLHVLSZXjHAiMY4HxIVjWV9PRM6SoeGjt/jrPgolPSzVLt2JuSpiivtV0cXimBpdWtfOOYkod1juPeHkjh8+fBZazbDtUVd+rrTX1NLQGljZJHPh0kVQ1xIywgDljiDgjI4cVWRbTWqVrnNmGBrkEehGT4KY+y1zCGmPXu+alaK4e90vP9JKD+4esXNs1rI9qUOgvOlOamVhd5T1Z3B+SMnLnyGFug2gt1RvdHKDuguPA8ANTosJbTWRY32YyQBpqdOtYNFcPe6Xn+klB/cPXh6h2H6nt92tttt9RT3KStErnSNaY44Gs3Ml7j374xjjwWuLaS1yu3WzDPHmNBnrCyfZq1g3nRn0UrRXWl6OVwdTb1Vqmlin+RHSOe3n8ouB5eCxu0DZFqjSNFJcn9RcbdGAZJ6YnMYPa5h4gZ7RkcuSyp9orZUydFHMC7xHlkAFfJrRWws33xnHgfZTxf1jS5waMZJwMnA/WVRtAbHdUaroIrm4wWy3ygOilqMl0jc/CawccY4gnAPDHA5WwqujlWNgzS6rp5ZsfBkoixue7IeT/gvlRtHbKeQxSTDeHefYEJFZ62Vm+2M48B7rfbFNmtDo62MuVU6GsvNVGC+dhDmRMIzuRnu73dvzKkOa1zS1wDmkYII4EKF6Gvmp9lVZT6a15CXWCaTq6K5Rv6yKF3dvcww8eDgCOJAwqnrXWVk0pps3uuqWSRSNBpWROBdUuIyAzvB555AcV5VeKWsnrd4u6XpD8LhoewcsdY6vVdzb56eOm3QNzd1B1Hfzzz61AukJs3odL1DNQWWWCCgrJd19EXhropDxzGO1ngPg/NykCtkuhNoW1W7HUN/fHZqJ4/gsc4JMcZ4gMjHHxJdjK9lvRxpupw7VsxlwfSFAA3PZw3//AJXoFDf6S3U7IK2oDpBrgE47CQDkjTK5SptU9XM6Wmi3WHTOB6HTK56RWTUPR91NRxOls9yobqG5/JuBgkd3YBJbnnzcOz7pBWU81HVzUlTGY54JHRyMPNrmnBH6wuhobpSV4Jp5A7Hn5Hiqmpop6U4mbj65r5Ii12hNnOqdZflbTRNjowS01dS4shBHYDgl3/KCpFRUxU0ZkmcGtHWVpihkmduRjJ7FkUV4t3Ryq3RtdcNVQRPz6TIKMyDGexxc3sx2LNbVtkJ0Pp9t6ZfhXxOqBD1Rperc3eyRx3jngD3dn3VMG0tsqJhBHLlx4Dg73xhWEtmrYozI9mAO0fNdD2DTWnZbFb5JLBanvfSxuc51HGSSWjJJwvJ2oaesFNs61BPT2O2QzR2+ZzJI6RjXNO6eIIGQtXpz4vW36pF7AXj7WPVnqP7Om9kryGmqJftzBvH7w6zzXfzRM+zOOB90+y4oRVDZ9sbuesNLwX6nvNJSxTPe1sb43OcN1xbxx8y0HvdLz/SSg/uHr2CbaO2QSOjklAcDg8DqPBefR2etkYHtjyDxHEfNQ9F9KqLqKqWDe3ureW5xjODhWWg6Pl3rKCnq26ioWtmibIGmF+QHAHH+Kl1t0pKENdUP3Q7TX+FopqGeqJETc410UWXU/R7sdkrtlluqK2z2+qmMswMk1Mx7iBI7HEjKm+pthN0sWnrheZr/AEc0dFTvndGyFwLg0ZwMlVjo2+qS2/Sz/iuXIbVXWCstgkpZM4eASMjqPcugsdDLT1pbO3GWnlzC2HuX0z/R20f+ij/+lw/cmtZcaljGhrWzPAAGABkrvdcxWHYVqe9TVNbdKmCzRPkc6Jkjesldl3MtBAaMd5z4Kq2PusNIJ31cmB8OMnPPQa+SnbQUMlR0bYGZPHTwUeRXi5dHKrZTl1u1VBNNjgyoozG0nHymucRx8OR7ccZPrTRuodIVgp73b5IWux1c7QXQyEjOGv5EjtHNd9Q3ygr3bkEoJ5cQfI4XK1NsqqUb0rMDnr7LPoiK2UBERERERERERERdIdFbS1NT2Cp1XURskq6uUwU7i3jFGzg4g97nEg+DR4q3KX9GW7U1dsxp7dE8Ge2zSxTM7RvvdI0/Md48fA9yqC8K2jllkucxl1DiB3DT04r060MYyij3OWfHr9Vmrhr7RdvuElBWamtsVTE8skjMwO44HBa4jgCDwIPLtXn7WqqlrdkV9q6KphqaeWiLo5YXh7HjI4gjgQvD1vsS0vqKtqrlSz1Vqrqh7pHuiw+IvPMlh8ePAjmfuietdMa02aRVFBLWvfZrk0xOfDIeonJbycw8njHAkdnA81cWi126rkidTTkSAglrhjOOJwR/lQK+tq4GPE0QLCCMg6Z5rV9GnQFJeZptVXmm66mpJhHRRPHoSSji55HaG5bjsznuXSSxew+hioNldhjiiDDLT9e/vc55Lsn9Y+7A7Fr6ueOlpZqmUkRwsdI/AycAZKqdoa+SuuEhJyASAOwcPXVTrTSspqRgA4kZPeV9UXH+s9rGsL5fJaujvNdbKNsh8mp6WUxbrMnd390+kcc88PuVm6O+0C56toq613yVk1dQNY+OYANdLGeHpDtIIGSB/OGePOXcNk6yhpPtTyCBjIGoz79q0Ul9p6qfoWg9h5qtKE1n53lH9Cf8m9XZQms/O8o/oT/k3rTs9rVfsv8AYLZdtIf3Gq7IijPSp1FcLVp61WmgqJacXKWV00kTi0uZGG+hkdhMgJ/s/rq7ZQPuFUymYcF3X3DJ9AplZVNpIHTOGQFZl/mRjJY3RyMa9jwWua4ZBB5ghc/9FK/XSpul2s1VWTVFK2nbURtleXdW4ODTjPIEEfqC6CW27W19sq3U7nZxjj38VjQVjayASgYz1L+Na1rQ1oDWgYAA4AL+rnLpT6ku0eqKPT9LWz09AyjbPJHG8tEkjnu4uweIAa3GeRytp0Yb/crzousprlVzVT6Gq6uKSVxc4RloIbknJwc47hgKdPs9LDbG3AuGDjh2HQ5UaK7RyVppA3iOvuVH1RZKDUdhq7NcohJTVMZaeHFp7HDxBwR8y502H6Xmum06e3X6ofW0umOtbHBK4vjEgkLQA13wW728/He0Z5rp1RrZpcaal2+63tbyxkla4SRccbxZxcAO04eT9xW6yVk8dDVxx/8AzkdnEAkf9T6LVcqeN9TA9/PHfwyPUKyrxtRaq05p6SOK93mjoZJRvMZLJhzh34548V7Kxu0LZtprWz2VF0ingrY4+rZVUzw14bnIBBBDhz5jtOMKjom0zpgKokM5jifVWdSZhGTCAXdui0Fjv9jvsXW2e7UVe3GT1EzXFvLmBxHMc+8LivXHx1vn2jUfiOVI1jsk1XoVztQaYuU1dBTEyOfAOrnhY0hwLm59MAjjjPwckY5Sa41c1fcKiuqXB09RK6WQgYBc4knh85XqOytspqZ8k9LN0jHADkQRzH+lxN8rJpmtjnj3XDyPcqJsB0FHrDUclZcoy60W4tdM3kJpDxbH4jgS7wwO1dX00ENNAyCnhjhhjG6yONoa1o7gBwCnfRtoI6LZPQTNaWvrZpqiTIxk75YD/wBrGqkLh9qblJWXB7CfhYS0Du4E+JXS2SjZT0jXAcXDJ8UUp6U3qyZ9oRey9Svantb1NdNSVtJZLpUWy108zooRTP3HyAeiXueOPE5IAOACO0ZWHumr9T3W0eabpfK6vo+sEu5UymU7wzg7zsu7T2roLJshVwzQ1cjgMEHHHOPn9ZVVcr/BJHJA0E5BGfrqXaenPi9bfqkXsBePtY9Weo/s6b2SvY058Xrb9Ui9gLx9rHqz1H9nTeyVxVL+OZ+se66Ob8M79J9ln+jb6pLb9LP+K5UdTjo2+qS2/Sz/AIrlR1tvn5lP+t3uVhbfwcX6R7Lgq6fynVfTP9orubTnxetv1SL2AuGbp/KdV9M/2iu5tOfF62/VIvYC7bb3+jT+PsFzmy/9Sbw/lePtY9Weo/s6b2Ss/wBG31SW36Wf8Vy0G1j1Z6j+zpvZKz/Rt9Ult+ln/FcuUj/I3/uj+0q8d+ZN/QfcKjoi5K2i7WdUXjU1U+0Xmqt1shlcyljpZDHvMDuD3EcSTgHnjjj59Vlsc93kcyIgBupPbos7jcoqBgc8ZJ0AXWq8zVNit2pLFVWe5wNlp6hhHEcWO7Ht7iDxBUq6OO0S76lnrdPX2Y1dTTwmpgqSPTczfAc1x5HBe3HhnuVoUauoqi1VZiecObggjzBC3UtTFXQb7R8J6j7LhnWmn6vS2p66xVp3pKWTdbJu4EjDxa8DxBBXjqxdK+gjp9c0FdGzddV0I6w8PScxxHz5wRz8FHV7daKw1tFFO7Vw49+h9V5tcKcU1S+IaA+nUiIisVDREREREREW00fU600PR0mt7RTuFtqi6Fz3enBJuuILJGg5HEcCceB5qu6T6Qdnq5I4NR2qa2lxINRAeuiaOwluN4dvLe5ePDSdHJjJdkFvjkY17HyVDXNcMggyOyCFpZdBaLluPnB+mLUane397yZoBdzyRyJ8SF5VeLvb6iplirYMuaSA5pwcA4Gfo9y7m30FXFCx9NLgOAJBGRxHH64d60Ub2yRtkYctcA4HvBWb2qWyG7bOr9RzMY7+BSSs3xwD2NL2n7i0LTLB7d9SQad2c3AOkLam4xuoqZreZc9pDj4ANyc9+O9clbI5JKyJsX3t4Y81fVjmMp3mTTByv1bEq2Ov2V2CWMg9XS9Q7HYYyWH2VrqmFlRTyQSDLJGFjh4EYK5u6MmuILRcptLXSoEVLXyB9I95w1k3Itz2bwxjxA710qp+0VBJQ3CRp0JLgew8fTRRbTVMqqRhGoGD3hcW6x2fan03fpbZLa6yrj3yKepgp3OZO3sIxnjxGW8xlW3oz6Juun6Guvl4gkpJa9jGQU7xh4jGSXOHMEkjAODwOeYVlRT7ltdU19H9lc0DOMnnjs6lFo7DDS1HTNcTjQcvmihNZ+d5R/Qn/JvV2UJrPzvKP6E/5N6i7Pa1X7L/AGC33bSH9xquygHTA/4X/wCr/wBFX9QDpgf8L/8AV/6Ky2R/OIf+39rljf8A8vk8P7gvI6JPxyu32f8A6jF0suaeiT8crt9n/wCoxdLLdtn+av7m+y17O/gW9591yz0qPWZF9nRe09bjojfFu9/XGewsP0qPWZF9nRe09bjojfFu9/XGewuluP8A4szub7hU9J+eP73eyty5Q1zadR1m1rVV200yY1NoqBUvdC7EjBgek0duO0DsXV6kOzD1669/5P8A3C5bZysdRConaAcM0Oh+JoPoru704qDFETjLtR+krMaV6QNbRgUWrbK+eSM7slRTEMkyHHOYzgZA8RxHjwuGk9Q2vVFkivFnmdNSylzQXMLXAg4IIK/Ne9GaUvU/X3TT1uqZskmV0ADzkk8XDieJJ4969S126gtVEyhtlFT0VLHnchgjDGDPE8B3qLdKu21LA6mhMb88ePw+A/0FvooKyFxbNIHN6uHH681+lzWuaWuAc0jBBHAhcQbRLXDZddXq107NyCnrZGwt+Szey0fcCF2xca2kt1BNXV1RHT00DC+WWQ4a1o7SuG9VXR171Lcrw8bprKqScDGMBziQMceQ8Sum2AZJ0szh93A888PTPmqXapzOjjb/AO2T5LqXo3V0dZsmt0LJN99HLNBLxyWnrC8D/te1UdcqdHvX8Gkr3NartKWWq4ubmQn0YJeQee5pHAnwB7F1TG9ksbZI3tex4Dmuacgg8iCqDai3SUdwkc4fC8lwPfxPkVa2SrZUUjQDxaMHw+a5Q2rbLNS2fU1dVWqz1dwtNRM6WCSljMpYD6Ra5rclu7xGSMHhxWLuGldSW60uutxsdfRUYkbH1tTCYsucCRgOwTyPELuVSnpTerJn2hF7L10dl2vqp5oaSRgOSBnjny5/WFUXHZ+CNkk7XHgCcfXUqPpz4vW36pF7AXj7WPVnqP7Om9kr2NOfF62/VIvYC8fax6s9R/Z03slcRS/jmfrHuukm/DO/SfZZ/o2+qS2/Sz/iuVHUU6KOoKeo0zXabkm/hdJO6oijLucL90EgeD85x8sd6talbQwvhuc4cNXE+B4haLTI2SijLeQHlwXDl+sVyh1vW6fbSyyV4rnwMiDcOkcXYaQO45BB7iCu27XTuo7ZS0jnBzoYWRlw5EtaBn/Bf7NPTmpFUYIjO1u6JSwbwb3Z54X1Um+7QOuzImlm7uDnnJOPLRarZam0LnuDs73oFmNrHqz1H9nTeyVn+jb6pLb9LP8AiuWg2serPUf2dN7JWf6Nvqktv0s/4rlhH+Rv/dH9pWTvzJv6D7hUdcbbRNnOodL6gnpWWyrqqB8hNJUwxF7XszwBxnDhyIPHhnlgrslFhY77NaJHOY0ODtQezTivtztkdwYA44I0KhfRl0Ld7NWV2pL3QS0RmpxBSRzNw9zXEOe4tPFvwWgZGTk/fdEXnalvls07Zp7vd6ltPSwDLnHm49jWjtJ7Ao1xrp7tVmVw+J2AAPIAfWq30lLHQwCMHgOJJXO3Swr4p9bW6gjOXUtCDJw5F7ycePAA/f8Aqja9TVl7q9Sakr75XH8vWTGQtzkMbyaweDWgNHgF5a9stNGaKijgOrRx79T6rzevqBU1L5RoT6dSIiKxUNERERERERbzZ5tV1NoymbQUpp6y2tJIpZ2cG5JJ3XDBGSe3KptF0jLe6IeW6Yqo5MceqqmvBP3tC52RUdbs5bax5kli+I9YJHsrOmvFZTtDGP4DqPH3V/vPSMJgcyz6Z3ZSPRkq6jLQcdrGjjx/rBRrWOqb3qy7OuV7rHTy8RGwDEcTfksbyA/xPMknivFRbrfY6G3nep48HnxJ8z/C11dzqqsYlfkctB6IqnoXbfqfT1LHQ3GKK90UTQ2MTO6uZgHICQA5H9oE+PYpYilVtBTVzOjqGBw7f4Oo8FopqqamdvROwV0PVdI2jER8l0tUPk3f/Eqw0B33NOR/+4LNWLb3fKa91tyvFrjuDJo2x09NFUGCOnAJJxlri4nIyT8keGI6iqo9lbVG1zRFrzJz4HPDwU598rnuB39OwfLir/75D9DP2n+6WEm2m9Zteh2geZMdUwt8i8q5/kTF/vNzxz8Hw8VO0W2n2cttNvdFHjeBaeLuIOo4n/KwlvFZNu7784II4DUadSv/AL5D9DP2n+6U/wBsG0j/AGg+a/4m82+Qdd/5rrus6zc/qNxjc8eawCL7R7OW2jmE8EeHDQ5cdRjrONF8qLvWVEZjkflp7B8ltNkmu/cDeau4+avOPlFP1G55R1W76QdnO67PLkqX75D9DP2n+6UARZVuz1urpTNPHlx68uHsQvlPdqumj6OJ+B3D+QtZtU1l7udTNvXm7zfu0zIOq6/rfglxzndb8rljsXubI9qPuAttdR+YvOXlUzZd7yvqt3DcYxuOypuikyWqkkpRRuZ/xjHDJ6tOOc+q0srp2Tmoa74z14H+lf8A3yH6GftP90podo97pNf3HV1k/i+WveTJTOd1rC0jGHcBvY5g4CxaKNS7PW2l3uii+8MHJJyO4krdPdqyfG+/Q5HADj4BX+zdIwiBrLxpnelA9KSkqMNJx2McOHH+sV+us6RlubTuNHpmrkm/miWpaxvz5AJXOqKG7ZC0udvdF6ux7qQNoK8Nxv8AoPktxtJ2nah1vimqzHR21r99lHBndJ7C9x4uI+4eCw6Ir2lpIaSMRQtDWjqCq555J3l8hyUW50JtU1bpIRU1NWCtt0Y3RR1Q3mBv9U/Cb24wcd4KwyJU0kFVH0c7A4dq+wzywO343EHsXQtt6RlMYgLjpeZkgHF1PVBwP3OaMfrKyG1ra9HrfTrLLDYnUUYnbOZX1O+ctBGN0NHDjzypSiqKfZi2U0wnjjw4HI4nh6qfLeq2aMxvfwOvAfJXe29IfyO3U1J7j9/qImx73nLG9ugDOOq4cl+PVm3rz9pm5WX3KeT+W0z4Ot84b+5vDGcdWM/NkKKIvjdlrUyQSCLiDn7ztfNfXXyuc3cL+Gmg+S9DTt6uWn7xBdrTUupquA5Y8AHmMEEHgQRwwrdp/pE7lEI77p90tQ0NHW0soAkOOJLSOHHjwJ5+HGAoplxstFccGoZkjr0PmFHpLjU0nCJ2By6lfNT9Id8tFLBpyxOgqHghlTVyB3V+IjAwTjvOAewr5W3pEy01upqafSrqmaKJjJJnXLBkcAAXEdUeZ4qEIoI2TtIZuGL1dnzz/hSTfa8u3uk9B8la9WbevP2mblZfcp5P5bTPg63zhv7m8MZx1Yz82QvP2bbaPcbpGmsHub8u6h8juu8u6ve3nF3werOMZ71JEW4bN2wQGnEXwE5xl2uMZ1zotZvFYZel3/ixjQaeSv8A75D9DP2n+6XgaM28XyzU4ortbo7tTMcereZiydjSTwLsEOxwxwB4c+6PotbdlrS1jmCHge13VyOcjXqWRvdcXBxk4jsHyXQdz6RkPUPbbdLyGUjDH1FUA0cOZa1vHj2ZHzqQa61vqHWdaKi9Vm9Ew5ipogWwxf2W5PHxJJ8Vm0UigsNvoHb8EeHczkn108FqqrpVVTd2V/Dlp7IiIrhV6IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi//Z" alt="Sam's Club Logo" style="width:180px;height:auto;object-fit:contain;margin-bottom:18px;display:block;margin-left:auto;margin-right:auto;border-radius:8px;">
+  <h1>Sam's Club <span class="red">Reward Club</span> That's<br>Changing Everything</h1>
+  <p class="sub">Discover how people are saving big on tech, home essentials, everyday finds, and more.</p>
+  <a href="https://trksy.org/aff_c?offer_id=2965&aff_id=3483" class="btn-red">
+    APPLY NOW
+    <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7.5 2.5l4 4-4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+  <div class="social-proof">
+    <div class="avatars">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj4KICA8Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIyMCIgZmlsbD0iI0Y0QzJDMiIvPgogIDx0ZXh0IHg9IjIwIiB5PSIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkludGVyLEFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiM4QjAwMDAiPlNKPC90ZXh0Pgo8L3N2Zz4=" alt="member">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj4KICA8Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIyMCIgZmlsbD0iI0MyRDRGNCIvPgogIDx0ZXh0IHg9IjIwIiB5PSIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkludGVyLEFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMwRDM1ODAiPk1SPC90ZXh0Pgo8L3N2Zz4=" alt="member">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj4KICA8Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIyMCIgZmlsbD0iI0MyRjRENCIvPgogIDx0ZXh0IHg9IjIwIiB5PSIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkludGVyLEFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMwRDU4MzAiPkFMPC90ZXh0Pgo8L3N2Zz4=" alt="member">
+    </div>
+    <p>Join 12,000+ shoppers who've claimed their rewards.</p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <p class="eyebrow">How it works</p>
+  <h2 class="sec-title">Five Simple Steps to Rewards</h2>
+  <div class="steps-list">
+
+    <div class="step-item">
+      <div class="step-left"><div class="step-num">1</div></div>
+      <div class="step-body">
+        <h3>Click apply now</h3>
+        <p>Start your journey to big savings</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-left"><div class="step-num">2</div></div>
+      <div class="step-body">
+        <h3>Enter your email &amp; basic info</h3>
+        <p>Quick 30-second signup process</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-left"><div class="step-num">3</div></div>
+      <div class="step-body">
+        <h3>Complete the survey</h3>
+        <p>Share your shopping preferences</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-left"><div class="step-num">4</div></div>
+      <div class="step-body">
+        <h3>Complete 5+ deals</h3>
+        <p>Simple tasks like app downloads &amp; trials</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-left"><div class="step-num">5</div></div>
+      <div class="step-body">
+        <h3>Receive your $750 gift card</h3>
+        <p>Delivered straight to your inbox</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- UNLOCK REWARDS -->
+<section class="unlock-section">
+  <p class="eyebrow" style="color:#0C6CFF;">Unlock rewards</p>
+  <h2 class="sec-title">What You Can Do With<br>Your $750 Gift Card</h2>
+  <div class="cards-grid">
+
+    <div class="ucard">
+      <div class="ucard-art">
+        <div class="blob1"></div><div class="blob2"></div>
+        <div class="corner-icon ci-tr"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="17" r="1"/></svg></div>
+        <div class="center-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="17" r="1"/></svg></div>
+        <div class="corner-icon ci-bl"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="17" r="1"/></svg></div>
+      </div>
+      <div class="ucard-body">
+        <h3>Tech &amp; Electronics</h3>
+        <p>Shop popular devices like tablets, headphones, and smart home tech.</p>
+      </div>
+    </div>
+
+    <div class="ucard">
+      <div class="ucard-art">
+        <div class="blob1"></div><div class="blob2"></div>
+        <div class="corner-icon ci-tr"><svg viewBox="0 0 24 24"><path d="M3 12l9-9 9 9"/><path d="M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/></svg></div>
+        <div class="center-icon"><svg viewBox="0 0 24 24"><path d="M3 12l9-9 9 9"/><path d="M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/></svg></div>
+        <div class="corner-icon ci-bl"><svg viewBox="0 0 24 24"><path d="M3 12l9-9 9 9"/><path d="M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/></svg></div>
+      </div>
+      <div class="ucard-body">
+        <h3>Home Essentials</h3>
+        <p>Upgrade your space with decor, furniture, and everyday essentials.</p>
+      </div>
+    </div>
+
+    <div class="ucard">
+      <div class="ucard-art">
+        <div class="blob1"></div><div class="blob2"></div>
+        <div class="corner-icon ci-tr"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+        <div class="center-icon"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+        <div class="corner-icon ci-bl"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+      </div>
+      <div class="ucard-body">
+        <h3>Trending Finds</h3>
+        <p>Get access to viral products, seasonal items, and exclusive deals.</p>
+      </div>
+    </div>
+
+    <div class="ucard">
+      <div class="ucard-art">
+        <div class="blob1"></div><div class="blob2"></div>
+        <div class="corner-icon ci-tr"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></div>
+        <div class="center-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+        <div class="corner-icon ci-bl"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg></div>
+      </div>
+      <div class="ucard-body">
+        <h3>Accessories &amp; More</h3>
+        <p>Browse accessories, add-ons, and must-have everyday items.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <p class="eyebrow">Questions &amp; Answers</p>
+  <h2 class="sec-title">Frequently Asked Questions</h2>
+  <div class="faq-wrap">
+
+    <div class="faq-item" onclick="openFaq(this)">
+      <div class="faq-row">
+        <div class="faq-left">
+          <div class="fiq"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></div>
+          What are deals?
+        </div>
+        <div class="faq-toggle"><svg viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg></div>
+      </div>
+      <div class="faq-answer">Simple tasks like app downloads, surveys, or trial subscriptions. Each deal is straightforward and designed to be completed quickly.</div>
+    </div>
+
+    <div class="faq-item" onclick="openFaq(this)">
+      <div class="faq-row">
+        <div class="faq-left">
+          <div class="fiq"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          How long do they take?
+        </div>
+        <div class="faq-toggle"><svg viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg></div>
+      </div>
+      <div class="faq-answer">Typically 10–20 minutes per deal. Most users complete all required deals within a few hours spread across a day or two.</div>
+    </div>
+
+    <div class="faq-item" onclick="openFaq(this)">
+      <div class="faq-row">
+        <div class="faq-left">
+          <div class="fiq"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          How many do I need?
+        </div>
+        <div class="faq-toggle"><svg viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg></div>
+      </div>
+      <div class="faq-answer">Complete 5+ deals to receive your reward. The more deals you complete, the faster you can receive your gift card.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA FOOTER -->
+<section class="cta-section">
+  <div class="cta-box">
+    <div class="cdeco tl"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="17" r="1"/></svg></div>
+    <div class="cdeco tr"><svg viewBox="0 0 24 24"><path d="M20 12V20a2 2 0 01-2 2H6a2 2 0 01-2-2V12"/><path d="M22 7H2v5h20V7z"/></svg></div>
+    <div class="cdeco bl"><svg viewBox="0 0 24 24"><path d="M3 12l9-9 9 9"/><path d="M5 10v9h14v-9"/></svg></div>
+    <div class="cdeco br"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+    <div class="cta-badge"><span class="dot"></span> Applications Open</div>
+    <h2>Ready to Start Saving?</h2>
+    <p class="cta-p">Join thousands of shoppers who have already claimed their $750 gift card. Your savings are just a few clicks away.</p>
+    <a href="https://trksy.org/aff_c?offer_id=2965&aff_id=3483" class="btn-white">
+      APPLY NOW
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7.5 2.5l4 4-4 4" stroke="#0C6CFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <p class="cta-fine">No credit card required · Takes less than 2 minutes</p>
+  </div>
+</section>
+
+<script>
+function openFaq(el) {
+  var all = document.querySelectorAll('.faq-item');
+  var isAlreadyOpen = el.classList.contains('open');
+  all.forEach(function(item) {
+    item.classList.remove('open');
+  });
+  if (!isAlreadyOpen) {
+    el.classList.add('open');
+  }
+}
+</script>
+
+<!-- TRUSTPILOT BADGE -->
+<div style="text-align:center; padding: 20px 20px 36px; background: #EEEDE9;">
+  <div style="display:inline-flex; align-items:center; gap:10px; background:#fff; border-radius:10px; padding:10px 20px; border:1px solid #E8E8E8;">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z" fill="#00B67A"/>
+    </svg>
+    <div style="display:flex; flex-direction:column; align-items:flex-start; gap:2px;">
+      <div style="display:flex; align-items:center; gap:3px;">
+        <span style="font-size:13px; font-weight:700; color:#111; font-family:Inter,sans-serif;">4.8</span>
+        <div style="display:flex; gap:2px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#00B67A"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#00B67A"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#00B67A"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#00B67A"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#00B67A"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
+        </div>
+      </div>
+      <span style="font-size:11px; color:#555; font-family:Inter,sans-serif;">Rated <strong>Excellent</strong> on Trustpilot</span>
+    </div>
+    <svg width="80" height="20" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="22" font-family="Arial,sans-serif" font-size="20" font-weight="900" fill="#00B67A">Trustpilot</text>
+    </svg>
+  </div>
+</div>
+</body>
+</html>
